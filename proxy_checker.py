@@ -47,7 +47,7 @@ def check_proxy(proxy, real_ip):
     socks5://127.0.0.1
     :param real_ip: our real IP addres
     """
-    proxies = {"http": proxy}
+    proxies = {"http": proxy, "https": proxy}
     try:
         resp = requests.get(URL, proxies=proxies, timeout=TIMEOUT)
         if resp.status_code == 200:
