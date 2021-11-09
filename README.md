@@ -29,7 +29,7 @@ It then saves working proxies that do not leak your IP to a file of your choice 
 The only pre-requisite for this tool are Python 3 and the **requests[socks]** package. To install it with its pre-requisites:
 
 ~~~
-git clone ...
+git clone https://github.com/ossie-git/proxy_checker
 cd proxy_checker
 python3 -m venv venv
 source venv/bin/activate
