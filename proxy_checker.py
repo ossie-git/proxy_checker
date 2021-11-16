@@ -16,6 +16,8 @@ It then saves working proxies that do not leak your IP to a file of your choice 
 import argparse
 import json
 import requests
+import sys
+import pkg_resources
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 
@@ -25,6 +27,23 @@ INPUT = "proxies.txt"
 OUTPUT = "live.txt"
 URL = "http://httpbin.org/get"
 live = []
+required_modules = ["PySocks"]
+
+
+def check_deps():
+    """
+    checks required dependencies are installed
+    """
+    missing = False
+    for package in required_modules:
+        try:
+            dist = pkg_resources.get_distribution(package)
+        except pkg_resources.DistributionNotFound:
+            print("{} is NOT installed".format(package))
+            missing = True
+
+    if missing:
+        sys.exit(1)
 
 
 def fetch_real_ip():
@@ -60,6 +79,7 @@ def check_proxy(proxy, real_ip):
 
 
 if __name__ == "__main__":
+    check_deps()
     cli_parser = argparse.ArgumentParser(
         description="Check that proxies in list are working", prog="proxy_checker"
     )
