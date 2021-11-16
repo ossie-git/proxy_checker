@@ -42,10 +42,9 @@ def check_deps():
             missing = True
 
     if missing:
-        print(
+        sys.exit(
             "Missing requirements. Please run: `pip install -r requirements.txt` first"
         )
-        sys.exit(1)
 
 
 def fetch_real_ip():
