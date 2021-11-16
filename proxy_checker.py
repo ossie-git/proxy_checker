@@ -64,7 +64,7 @@ def check_proxy(proxy, real_ip):
     included in the response. Only then is it returned as a valid proxy
 
     :param proxy: the proxy we want to test. This is in the format:
-    socks5://127.0.0.1
+    socks5://127.0.0.1:9050
     :param real_ip: our real IP addres
     """
     proxies = {"http": proxy, "https": proxy}
