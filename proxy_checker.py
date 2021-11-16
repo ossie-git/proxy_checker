@@ -39,10 +39,12 @@ def check_deps():
         try:
             dist = pkg_resources.get_distribution(package)
         except pkg_resources.DistributionNotFound:
-            print("{} is NOT installed".format(package))
             missing = True
 
     if missing:
+        print(
+            "Missing requirements. Please run: `pip install -r requirements.txt` first"
+        )
         sys.exit(1)
 
 
